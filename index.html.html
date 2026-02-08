@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasapi Tradicional - Mish i Freskët në Tiranë</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blood-red: #8B1E1E;
+            --deep-maroon: #5C1A1A;
+            --cream: #F4EBE0;
+            --charcoal: #2B2520;
+            --gold: #D4A574;
+            --off-white: #FAF7F2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--off-white);
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        /* Texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,0,0,.02) 2px,
+                    rgba(0,0,0,.02) 4px
+                );
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.3;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--deep-maroon) 0%, var(--blood-red) 100%);
+            color: var(--cream);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Diagonal stripe accent */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 60%;
+            height: 200%;
+            background: rgba(255,255,255,0.05);
+            transform: rotate(-15deg);
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            letter-spacing: 0.05em;
+            line-height: 0.9;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-style: italic;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            animation: slideInLeft 0.8s ease-out 0.2s both;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            max-width: 500px;
+            line-height: 1.6;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Main content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Products section */
+        .products {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--blood-red);
+            margin-bottom: 2rem;
+            letter-spacing: 0.03em;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: var(--gold);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border: 3px solid var(--charcoal);
+            padding: 2rem;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 0 var(--blood-red);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            opacity: 0.3;
+        }
+
+        .product-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--blood-red);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .product-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .product-origin {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--deep-maroon);
+        }
+
+        /* Info section */
+        .info-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: linear-gradient(to bottom, var(--cream) 0%, var(--off-white) 100%);
+            border-top: 4px solid var(--blood-red);
+            border-bottom: 4px solid var(--blood-red);
+        }
+
+        .info-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--blood-red);
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .info-card p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .info-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact section */
+        .contact {
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(212,165,116,0.05) 10px,
+                    rgba(212,165,116,0.05) 20px
+                );
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 2rem;
+            color: var(--gold);
+            letter-spacing: 0.03em;
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-details strong {
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-maroon);
+            color: var(--cream);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 2rem 1rem;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-section {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Kasapi Tradicional</h1>
+            <p class="subtitle">Mish i Freskët Çdo Ditë</p>
+            <p class="tagline">Nga zemra e Tiranës, me traditë dhe cilësi që nga viti 1985. Mishi më i mirë, direkt nga fermat lokale te familjes suaj.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="products">
+            <h2 class="section-title">Produktet Tona</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <h3 class="product-name">Mish Viçi</h3>
+                    <p class="product-description">Mish i butë dhe i freskët nga viça të rinj, ideal për biftek, skara dhe gatim tradicional.</p>
+                    <p class="product-origin">🐄 Nga fermat e Shkodrës</p>
+                </div>
+
+                <div class="product-card">
+                    <h3 class="product-name">Mish Derri</h3>
+                    <p class="product-description">Cilësi e shkëlqyer për çdo recetë - nga sulltashi deri te skara verore.</p>
+                    <p class="product-origin">🐖 Prodhim lokal</p>
+                </div>
+
+                <div class="product-card">
+                    <h3 class="product-name">Mish Qengji</h3>
+                    <p class="product-description">Qengj i njomë nga kullota e Alpeve Shqiptare, perfekt për festat dhe raste të veçanta.</p>
+                    <p class="product-origin">🐑 Nga malet e Veriut</p>
+                </div>
+
+                <div class="product-card">
+                    <h3 class="product-name">Mish Pule</h3>
+                    <p class="product-description">Pulë fermë të freskëta çdo ditë, pa antibiotikë dhe me ushqim natyral.</p>
+                    <p class="product-origin">🐓 Ferma organike</p>
+                </div>
+
+                <div class="product-card">
+                    <h3 class="product-name">Salsiçe të Shtëpisë</h3>
+                    <p class="product-description">Receta tradicionale familjare me erëza të zgjedhura me kujdes.</p>
+                    <p class="product-origin">🌿 Bërë me dorë</p>
+                </div>
+
+                <div class="product-card">
+                    <h3 class="product-name">Suxhuk & Pastërma</h3>
+                    <p class="product-description">Specialitete të tymosura sipas metodave tradicionale shqiptare.</p>
+                    <p class="product-origin">⭐ Recetë tradicionale</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="info-card">
+                <div class="icon">🏆</div>
+                <h3>Cilësi e Garantuar</h3>
+                <p>Çdo copë mishi kontrollohet me kujdes. Punojmë vetëm me ferma të certifikuara që respektojnë standardet më të larta të cilësisë.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="icon">🌾</div>
+                <h3>Prodhim Lokal</h3>
+                <p>Mbështesim fermerët shqiptarë. Mishi ynë vjen nga fermat më të mira në Shqipëri, duke garantuar freskësi dhe shije autentike.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="icon">👨‍🍳</div>
+                <h3>Ekspertizë Familjare</h3>
+                <p>Tre breza kasapësh në shërbimin tuaj. Ekspertiza jonë siguron prerje profesionale dhe këshilla për çdo recetë.</p>
+            </div>
+        </section>
+    </main>
+
+    <section class="contact">
+        <div class="contact-content">
+            <h2>Na Vizitoni</h2>
+            <div class="contact-details">
+                <div>
+                    <strong>📍 Adresa</strong>
+                    Rruga "Elbasanit"<br>
+                    Afër Pazarit të Ri<br>
+                    Tiranë, Shqipëri
+                </div>
+                <div>
+                    <strong>🕐 Orari</strong>
+                    E Hënë - E Shtunë: 7:00 - 19:00<br>
+                    E Diel: 7:00 - 14:00
+                </div>
+                <div>
+                    <strong>📞 Kontakti</strong>
+                    Tel: +355 4 123 4567<br>
+                    Mob: +355 69 123 4567
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Kasapi Tradicional. Të gjitha të drejtat e rezervuara.</p>
+    </footer>
+
+    <script>
+        // Add scroll animation for product cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Subtle parallax effect on header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('header');
+            if (header && scrolled < 500) {
+                header.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
